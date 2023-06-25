@@ -47,7 +47,7 @@ export default function PostList({ posts, msg }: PostListProps) {
 
     const views = {
       uid: user?.uid,
-      id: Math.random(),
+      id: new Date(),
     };
 
     if (viewed) {
