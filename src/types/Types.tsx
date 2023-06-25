@@ -57,3 +57,8 @@ export interface BookmarkProps {
   views: [];
   bookmarks: [];
 }
+
+export interface UserCategoryProps {
+  value: string;
+  label: string;
+}

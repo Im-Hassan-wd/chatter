@@ -13,7 +13,8 @@ export const useSignup = () => {
     email: string,
     password: string,
     lastName: string,
-    thumbnail: File
+    thumbnail: any,
+    category: string
   ) => {
     setError(null);
     setIsPending(true);
@@ -46,6 +47,7 @@ export const useSignup = () => {
         email,
         lastName,
         headline: "",
+        category,
       });
 
       // dispatch login action

@@ -24,8 +24,6 @@ import Analytics from "./pages/analytics/Analytics";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
-  const { mode }: any = useTheme();
-  const localMode = localStorage.getItem("mode");
 
   // states
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -45,7 +43,7 @@ function App() {
   }, []);
 
   return (
-    <div className={localMode ? `App ${localMode}` : `App ${mode}`}>
+    <div className="App">
       {mobileMenu && (
         <div className="backdrop" onClick={() => setMobileMenu(false)}></div>
       )}

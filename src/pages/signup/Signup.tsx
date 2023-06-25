@@ -1,56 +1,59 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Select from "react-select";
 
-// hooks
-import { useSignup } from "../../hooks/useSignup";
-import GoogleButton from "../../components/GoogleButton";
+import { UserCategoryProps } from "../../types/Types";
 
 // styles
 import "./Signup.css";
-import { useGoogle } from "../../hooks/useGoogle";
 
-const userCategories = [
+// hooks & components
+import { useGoogle } from "../../hooks/useGoogle";
+import { useSignup } from "../../hooks/useSignup";
+
+// components
+import GoogleButton from "../../components/GoogleButton";
+
+const userCategories: UserCategoryProps[] = [
   { value: "writer", label: "Writer" },
   { value: "reader", label: "Reader" },
 ];
 
-interface Option {
-  value: string;
-  label: string;
-}
-
 export default function Signup() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [textType, setTextType] = useState(false);
+  // states
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
+  const [userCategory, setUserCategory] = useState<string>("");
+
   const [thumbnailError, setThumbnailError] = useState<string | null>(null);
-  const [userCategory, setUserCategory] = useState<Option | null>(null);
-  const { signup, isPending, error }: any = useSignup();
+  const [textType, setTextType] = useState<boolean>(false);
+
+  // functions
+  const { signup, isPending, error } = useSignup();
   const {
     googleSignUp,
-    signupError,
+    error: signupError,
     isPending: signupPending,
-  }: any = useGoogle();
+  } = useGoogle();
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    signup(firstName, lastName, email, password, thumbnail);
+    signup(firstName, lastName, email, password, thumbnail, userCategory);
   };
 
-  const handleInputType = (e: any) => {
+  const handleInputType = (e: React.MouseEvent<HTMLButtonElement>) => {
     setTextType(!textType);
-    textType
-      ? e.target.previousElementSibling?.setAttribute("type", "password")
-      : e.target.previousElementSibling?.setAttribute("type", "text");
+    const inputElement = e.currentTarget
+      .previousElementSibling as HTMLInputElement;
+    inputElement.type = textType ? "password" : "text";
   };
 
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setThumbnail(null);
-    let selected = e.target.files?.[0];
+    const selected = e.target.files?.[0];
 
     if (!selected) {
       setThumbnailError("Please select a file");
@@ -67,6 +70,11 @@ export default function Signup() {
 
     setThumbnailError(null);
     setThumbnail(selected);
+    console.log("thumbnail updated");
+  };
+
+  const handleUserCategoryChange = (option: any) => {
+    setUserCategory((option as UserCategoryProps).value);
   };
 
   return (
@@ -121,12 +129,17 @@ export default function Signup() {
             />
           </div>
 
-          {/* <div className="input-div">
-            <Select options={userCategories}
-            onChange={(option) =>
-              setUserCategory(option as ValueType<Option, false>)
-            } />
-          </div> */}
+          <div className="input-div">
+            <label className="join">You rare joining as?</label>
+            <Select
+              options={userCategories}
+              onChange={handleUserCategoryChange}
+              // @ts-ignore
+              value={userCategories.find(
+                (option) => option.value === userCategory
+              )}
+            />
+          </div>
 
           <div className="input-div">
             <label htmlFor="email">
