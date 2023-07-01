@@ -23,7 +23,7 @@ export default function Signup() {
   // states
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState<string>("");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [userCategory, setUserCategory] = useState<string>("");
@@ -130,7 +130,7 @@ export default function Signup() {
           </div>
 
           <div className="input-div">
-            <label className="join">You rare joining as?</label>
+            <label className="join">You are joining as?</label>
             <Select
               options={userCategories}
               onChange={handleUserCategoryChange}
