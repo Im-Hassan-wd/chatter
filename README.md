@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+<!--- Replace the following placeholders in angle brackets with your own information --->
+<!--- Make sure to remove the angle brackets as well --->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Chatter: Connect with Text-Based Content
 
-## Available Scripts
+![Website Preview](https://example.com/preview-image.png)
 
-In the project directory, you can run:
+This repository contains a blog post website built with React, TypeScript, and Firebase. The website provides features such as user authentication, post creation, bookmarking, post analytics, and more.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Authentication:** Users can sign up using their email and password or log in using their Google account. Custom hooks like `useGoogle`, and `useSignup` have been implemented to handle the authentication process.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Content Creation:** Chatter offers a powerful rich text editor that empowers users to create and publish their own content seamlessly. Users can write blog posts or any other form of content and enhance it with images or videos. The content is authored and saved in Markdown format, and it gets displayed as HTML when viewed.
+  
+- **Content Discovery:** Chatter provides a personalized feed tailored to each user's interests and reading history, making it effortless for users to discover new captivating content. Users can also browse and search for other users' content, exploring various categories and tags that pique their interest.
+  
+- **Social Features:** Chatter fosters interaction and engagement among users through social features like commenting and liking. Users can share their thoughts, engage in discussions, and connect with fellow content enthusiasts.
 
-### `npm test`
+- **Persistent User Data:** The Context API is used to persist user data throughout the website. This ensures that users can access their information across different pages.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Home Page:** The home page serves as the main landing page for users. It displays a curated list of posts based on user interests.
 
-### `npm run build`
+- **Posts Page:** Users can explore all posts on the dedicated posts page. This allows them to discover a wide range of articles and blog posts from various authors.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Bookmark Page:** Users have the ability to bookmark posts they find interesting. The bookmark page provides a convenient way to access and revisit these saved posts.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Post Details Page:** Clicking on a post takes the user to the post details page, where they can read the full article and engage in comments and discussions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Analytics Page:** Users can access the analytics page to gain insights into their posts. This feature provides valuable data on post views, likes, shares, and user engagement.
 
-### `npm run eject`
+## Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To run this project locally, follow these steps:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ```bash
+   git clone https://github.com/im-hassan-wd/chatter.git
+   ```
+   
+2. Navigate to the project directory:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+   ```bash
+   cd chatter
+   ```
+   
+3. Install the dependencies:
 
-## Learn More
+   ```bash
+   npm install
+   ```
+   
+4. Set up Firebase:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ - Create a Firebase project and enable the necessary authentication providers.
+ - Update the Firebase configuration in the project's `firebase/config` file.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   
+5. Start the development server:
+
+   ```bash
+   npm start
+   ```
+   
+5. Open the application in your browser:
+
+   ``` bash
+   http://localhost:3000
+   ```
