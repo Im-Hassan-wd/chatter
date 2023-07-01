@@ -65,6 +65,6 @@ To run this project locally, follow these steps:
    
 5. Open the application in your browser:
 
-   ```
-   Open the application in your browser:
+   ``` bash
+   http://localhost:3000
    ```
