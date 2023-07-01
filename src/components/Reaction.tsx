@@ -61,17 +61,13 @@ export default function Reaction({ post }: ReactionProps) {
         </Link>
       </button>
 
-      <button
-        className={
-          like.length && like[0].uid === user?.uid
-            ? localColor
-              ? `color-${localColor}`
-              : `color-${color}`
-            : "reactions"
-        }
-        onClick={handleLike}
-      >
-        <i className="fi fi-rr-heart"></i>
+      <button className="reactions" onClick={handleLike}>
+        {like.length && like[0].uid === user?.uid ? (
+          <i className="fi fi-sr-heart"></i>
+        ) : (
+          <i className="fi fi-rr-heart"></i>
+        )}
+
         <span className="count">{post.likes.length}</span>
       </button>
 
